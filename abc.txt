@@ -1,0 +1,72 @@
+using System.Text;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace WpfApp1
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void btnThoat_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult tl = MessageBox.Show("Bạn muốn kết thúc chương trình?", "EXIT",
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if(tl == MessageBoxResult.Yes) {this.Close(); }
+        }
+
+        private void btnThem_Click(object sender, RoutedEventArgs e)
+        {
+            string soThich = "";
+            lstThongTin.Items.Add("Họ tên: " + txtHoten.Text);
+
+            if(radNam.IsChecked== true)
+            {
+                lstThongTin.Items.Add("Giới tính: Nam");
+            } else
+            {
+                lstThongTin.Items.Add("Giới tính: Nữ");
+            }
+
+            if (radDaKetHon.IsChecked == true)
+            {
+                lstThongTin.Items.Add("Tình trạng hôn nhân: Đã kết hôn");
+            }
+            else
+            {
+                lstThongTin.Items.Add("Tình trạng hôn nhân: Chưa kết hôn");
+            }
+
+            if(chkBongDa.IsChecked == true)
+            {
+                soThich = "Sở thích: " + "Bóng đá";
+            }
+            if (chkBoi.IsChecked == true)
+            {
+                soThich += ", Bơi lội";
+            }
+            if (chkAmNhac.IsChecked == true)
+            {
+                soThich += ", Âm nhạc";
+            }
+            if (chkLeoNui.IsChecked == true)
+            {
+                soThich += ", Leo núi";
+            }
+            lstThongTin.Items.Add(soThich);
+        }
+    }
+}
